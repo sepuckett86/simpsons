@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Quote from '../../components/quote/Quote';
 import Load from '../../components/quote/Load';
-import { getQuote, getCharacterName, getCharacterImage } from '../../selectors/quoteSelectors';
+import { getQuote, getCharacterName, getCharacterImage, getLoading } from '../../selectors/quoteSelectors';
 import { fetchQuote } from '../../actions/quoteActions';
 
 class SimpsonsQuote extends Component {
@@ -12,7 +12,8 @@ class SimpsonsQuote extends Component {
     quote: PropTypes.string.isRequired, 
     characterName: PropTypes.string.isRequired, 
     characterImage: PropTypes.string.isRequired,
-    fetch: PropTypes.func.isRequired
+    fetch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired
   }
 
   componentDidMount() {
@@ -20,6 +21,7 @@ class SimpsonsQuote extends Component {
   }
 
   render() {
+    if(this.props.loading) return <h3>Loading</h3>;
     return (
       <>
       <Load handleClick={this.props.fetch}/>
@@ -32,7 +34,8 @@ class SimpsonsQuote extends Component {
 const mapStateToProps = state => ({
   quote: getQuote(state),
   characterName: getCharacterName(state),
-  characterImage: getCharacterImage(state)
+  characterImage: getCharacterImage(state),
+  loading: getLoading(state)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,4 @@
-import { FETCH_QUOTE } from '../actions/quoteActions';
+import { FETCH_QUOTE, FETCH_QUOTE_LOADING } from '../actions/quoteActions';
 
 const initialState = {
   quote: {
@@ -12,8 +12,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case FETCH_QUOTE_LOADING:
+      return { ...state, loading: true };
     case FETCH_QUOTE:
-      return { ...state, quote: action.payload };
+      return { ...state, quote: action.payload, loading: false };
     default:
       return state;
   }
