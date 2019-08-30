@@ -1,7 +1,11 @@
-import FETCH_QUOTE from '../actions/quoteActions';
+import { FETCH_QUOTE } from '../actions/quoteActions';
 
 const initialState = {
-  quote: {},
+  quote: {
+    quote: '',
+    characterName: '',
+    characterImage: ''
+  },
   loading: false,
   error: null
 };
