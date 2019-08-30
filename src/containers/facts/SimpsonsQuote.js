@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Quote from '../../components/quote/Quote';
+import Load from '../../components/quote/Load';
 import { getQuote, getCharacterName, getCharacterImage } from '../../selectors/quoteSelectors';
 import { fetchQuote } from '../../actions/quoteActions';
 
@@ -20,7 +21,10 @@ class SimpsonsQuote extends Component {
 
   render() {
     return (
+      <>
+      <Load handleClick={this.props.fetch}/>
       <Quote { ...this.props }/>
+      </>
     );
   }
 }

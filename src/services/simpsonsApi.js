@@ -7,9 +7,10 @@ export const getQuote = () => {
       return res.json();
     })
     .then(res => {
-      const quote = res[0].quote;
-      const characterName = res[0].character;
-      const characterImage = res[0].image;
+      const [quoteObject] = res;
+      const quote = quoteObject.quote;
+      const characterName = quoteObject.character;
+      const characterImage = quoteObject.image;
       return { quote, characterName, characterImage };
     });
 };
