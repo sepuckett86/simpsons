@@ -1,4 +1,4 @@
-import { FETCH_QUOTE, FETCH_QUOTE_LOADING } from '../actions/quoteActions';
+import { FETCH_QUOTE, FETCH_QUOTE_LOADING, FETCH_QUOTE_REJECTED } from '../actions/quoteActions';
 
 const initialState = {
   quote: {
@@ -12,6 +12,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type) {
+    case FETCH_QUOTE_REJECTED:
+      return { ...state, error: action.payload };
     case FETCH_QUOTE_LOADING:
       return { ...state, loading: true };
     case FETCH_QUOTE:

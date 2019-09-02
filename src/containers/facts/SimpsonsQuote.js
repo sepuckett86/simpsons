@@ -13,7 +13,7 @@ class SimpsonsQuote extends Component {
     characterName: PropTypes.string.isRequired, 
     characterImage: PropTypes.string.isRequired,
     fetch: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
